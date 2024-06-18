@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Idoso</title>
 
-<link rel="stylesheet" href="./css/cadastro.css">
+<link rel="stylesheet" href="../css/cadastro.css">
 <body>
     <form action="home.php" method="post">
         <h2>Cadastro de Idoso</h2>

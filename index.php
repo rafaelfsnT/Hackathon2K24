@@ -12,8 +12,6 @@ session_start();
     <title>ADMIN</title>
     <base href="<?php echo "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"]; ?>">
 
-    <!-- Bootst rap core JavaScript-->
-
 </head>
 
 <body id="page-top">
