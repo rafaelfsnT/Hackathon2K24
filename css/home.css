@@ -1,0 +1,17 @@
+.navbar-custom {
+    background-color: #00acee;
+    padding: 10px 5% !important;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav-center {
+    margin: auto;
+}
+.carrossel{
+    margin-top: 15px;
+}
+.carousel-item img {
+    object-fit: cover; /* Redimensiona a imagem para preencher o contêiner */
+    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
+    height: 800px; /* Altura fixa para as imagens do carrossel */
+}
