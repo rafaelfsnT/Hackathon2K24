@@ -1,4 +1,11 @@
+.navbar-logo {
+    width: 50px; /* ajuste este valor conforme necessário */
+    height: auto;
+}
+
 .navbar-custom {
+    padding-left: 15px; /* ajuste este valor conforme necessário */
+    padding-right: 15px; /* ajuste este valor conforme necessário */
     background-color: #00acee;
     padding: 10px 5% !important;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
