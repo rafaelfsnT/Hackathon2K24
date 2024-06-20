@@ -1,12 +1,12 @@
 .navbar-logo {
-    width: 50px; /* ajuste este valor conforme necessário */
+    width: 80px;
     height: auto;
 }
 
 .navbar-custom {
     padding-left: 15px; /* ajuste este valor conforme necessário */
     padding-right: 15px; /* ajuste este valor conforme necessário */
-    background-color: #00acee;
+    background-color: #256265;
     padding: 10px 5% !important;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
@@ -18,7 +18,29 @@
     margin-top: 15px;
 }
 .carousel-item img {
-    object-fit: cover; /* Redimensiona a imagem para preencher o contêiner */
-    width: 100%; /* Garante que a imagem ocupe toda a largura do contêiner */
-    height: 800px; /* Altura fixa para as imagens do carrossel */
+    object-fit: cover; 
+    width: 100%;
+    height: 800px;
+}
+.fs-2 {
+    font-size: 2rem;
+    /* Tamanho do ícone */
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+    /* Espaçamento superior */
+}
+
+.row {
+    margin-bottom: 1.5rem;
+    /* Espaço entre as linhas de conteúdo */
+}
+li.nav-item a{
+    color: aliceblue;
+    text-decoration: none;
+}
+li.nav-item :hover{
+    color: black;
+    
 }
