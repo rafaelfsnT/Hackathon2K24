@@ -10,7 +10,6 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
     <base href="<?php echo "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["SCRIPT_NAME"]; ?>">
 
     <!-- Bootst rap core JavaScript-->
@@ -87,7 +86,6 @@ session_start();
             // montando a url da pagina
             $page = "$pasta/$arquivo";
 
-            require "header.php";
             // verificando se existe o arquivo com o nome da variavel page
             if(file_exists("$page.php")) {
                 require "$page.php";
@@ -95,7 +93,6 @@ session_start();
                 // caso nao exista um arquivo com o nome page redireciona o usuario para uma pagina com mensagem de erro!
                 require "paginas/error.php";
             }
-            require "footer.php";
         }
     }
     ?>
