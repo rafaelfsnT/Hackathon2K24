@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Idoso para Vacina</title>
-    <link rel="stylesheet" href="./css/agendamentos.css">
-    <script src="./js/cadastro.js"></script>
+    <link rel="stylesheet" href="./cssPages/agendamentos.css">
+    <script src="./jsPages/cadastro.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 <div class="container">
-        <header>
+
             <img src="./img/logovacina.png" alt="Logo do Sistema" class="logo">
             <h1>Tela de Agendamento</h1>
-        </header>
         <form id="cadastroForm" onsubmit="return validarFormulario()" method="post">  
         <div class="form-group">
                 <label for="nome">Nome</label>
@@ -33,7 +32,7 @@
            
            
             <div class="form-buttons">
-               <a href="./paginas/home"> <button type="submit">Agendar</button></a> 
+               <a href=".paginas/home"> <button type="submit">Agendar</button></a> 
             </div>
         </form>
     </div>
