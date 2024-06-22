@@ -2,10 +2,14 @@ const path = require('path')
 
 module.exports = {
   development: {
-    client: 'sqlite3',
+    client: 'mysql',
     connection: {
-      filename: path.resolve(__dirname, 'src', 'database', 'database.db')
-    },
+      host: 'localhost', 
+            user: 'root', 
+            password: '', 
+            database: 'vacina'
+          },
+  
    
 
     migrations: {
