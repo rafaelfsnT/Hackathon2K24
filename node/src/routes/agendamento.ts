@@ -4,7 +4,7 @@ import AppError from '../utils/AppError'
 
 const router = Router()
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     knex("agendamento").then((agendamentos) => {
 
         res.json({ agendamentos })
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
     const agendamento = await knex("agendamento")
         .insert(objSalvar)
 
-    res.json({ message: "Categoria Salva" })
+    res.json({ message: "Agendamento Salvo" })
 
 })
 

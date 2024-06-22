@@ -68,22 +68,4 @@ h1 {
     gap: 10px; /* Espaçamento entre os botões */
 }
 
-.form-buttons button {
-    padding: 12px 24px; /* Espaçamento interno dos botões */
-    border: none;
-    border-radius: 4px; /* Cantos arredondados dos botões */
-    background: #5cb85c; /* Cor de fundo dos botões */
-    color: white; /* Cor do texto dos botões */
-    cursor: pointer;
-    transition: background 0.3s; /* Transição suave de cor de fundo */
-    flex: 1; /* Ocupa espaço igualmente */
-}
-
-.form-buttons button[type="button"] {
-    background: #d9534f; /* Cor de fundo alternativa para botão "Voltar" */
-}
-
-.form-buttons button:hover {
-    opacity: 0.8; /* Reduz a opacidade ao passar o mouse */
-}
 
