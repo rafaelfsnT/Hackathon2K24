@@ -5,21 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Home</title>
-    <link rel="stylesheet" href="./css/home.css">
-    <script src="./js/home.js"></script>
+    <link rel="stylesheet" href="./cssPages/home.css">
+    <script src="./jsPages/home.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/8bb0dffdb3.js" crossorigin="anonymous"></script>
-    <style>
-
-    </style>
+  
 </head>
 
 <body>
-    <?php
-    require "./configs/header.php";
-    ?>
-
-
     <br>
     <div class="conteudo">
         <div class="container mt-4">
@@ -27,7 +20,7 @@
                 <div class="col-md-8 text-center">
                     <h1>Agendamentos online de vacinas</h1>
                     <h4>Agende suas vacinas comigo, sua plataforma de saúde digital!</h4>
-                    <a href="./paginas/agendamentos">  <button class="btn btn-outline-success mt-3" type="button">Agendar</button></a>
+                    <a href="./paginas/agendamentos ">  <button class="btn btn-outline-success mt-3" type="button">Agendar</button></a>
                 </div>
                 <div class="col-md-4">
                     <img src="./img/imagem4.png" alt="Imagem" class="img-fluid">
