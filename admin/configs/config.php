@@ -2,7 +2,7 @@
     $servidor = "localhost";
     $usuario  = "root";
     $senha = "";
-    $banco  = "hackathon";
+    $banco  = "vacina";
 
 
     try {
@@ -17,3 +17,5 @@
         $valor = str_replace(".","", $valor);
         return str_replace(",",".", $valor);
     }
+
+    

@@ -12,25 +12,28 @@ router.get('/', async (req, res) => {
     res.json({ usuarios })
 })
 
+interface IDadosAgendamento {
+    nome: String
+    email: String
+    login: String
+    senha: String
+    ativo: String
+
+}
+
 router.post('/', async (req, res) => {
-    const registerBodySchema = z.object({
-        nome: z.string(),
-        email: z.string(),
-        senha: z.string()
-    })
-    
-    const objSalvar = registerBodySchema.parse(req.body)
 
-    if (!objSalvar?.senha) {
-        throw new AppError('Senha é obrigatória!!')
-    }
+    const objSalvar: IDadosAgendamento = req.body;
 
-    objSalvar.senha = await hash(objSalvar.senha, 8)
+    // if (!objSalvar?.nome) {
+    //     throw new AppError('Nome é obrigatorio!')
+    // }
 
-    const id_usuario = await knex('usuarios')
+    const usuario = await knex("usuario")
         .insert(objSalvar)
 
-    res.json({ message: "Usuario salvo com sucesso!!" })
+    res.json({ message: "Usuário Salvo" })
+
 })
 
 router.put('/:id', async (req, res) => {
