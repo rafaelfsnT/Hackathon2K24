@@ -1,22 +1,30 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    overflow-x: hidden;
-}
-
-.container,
 .row {
-    max-width: 100%;
-}
+    margin-bottom: 1.5rem;
+    /* Espaço entre as linhas de conteúdo */
+    /* home.css */
 
-img {
-    max-width: 100%;
-    height: auto;
+    /* Reset básico */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .container,
+    .row {
+        max-width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
 }
 
 .navbar-logo {
@@ -26,9 +34,7 @@ img {
 
 .navbar-custom {
     padding-left: 10px;
-    /* ajuste este valor conforme necessário */
     padding-right: 15px;
-    /* ajuste este valor conforme necessário */
     background-color: #256265;
     padding: 10px 5% !important;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
@@ -58,47 +64,17 @@ img {
     /* Espaçamento superior */
 }
 
-.row {
-    margin-bottom: 1.5rem;
-    /* Espaço entre as linhas de conteúdo */
-    /* home.css */
-
-    /* Reset básico */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    /* Garantir que o body não tenha margens */
-    body {
-        margin: 0;
-        overflow-x: hidden;
-        /* Remove a barra de rolagem horizontal */
-    }
-
-    /* Ajustar largura máxima de elementos */
-    .container,
-    .row {
-        max-width: 100%;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Outros estilos que já estão no seu arquivo home.css */
-}
-
 li.nav-item a {
-    color: aliceblue;
+    color: #ffffff;
     text-decoration: none;
 }
 
-li.nav-item :hover {
-    color: black;
+.dropdown-menu .dropdown-item {
+    color: black !important;
+}
 
+.descricao {
+    margin-top: 50px;
 }
 
 .descricao .fa-solid,
