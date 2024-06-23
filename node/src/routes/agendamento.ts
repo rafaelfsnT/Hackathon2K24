@@ -4,12 +4,20 @@ import AppError from '../utils/AppError'
 
 const router = Router()
 
-router.get('/:id', (req, res) => {
+// router.get('/:id', (req, res) => {
+//     knex("agendamento").then((agendamentos) => {
+
+//         res.json({ agendamentos })
+//     })
+// })
+
+router.get('/', (req, res) => {
     knex("agendamento").then((agendamentos) => {
 
         res.json({ agendamentos })
     })
 })
+
 
 interface IDadosAgendamento {
     agendamento: Date

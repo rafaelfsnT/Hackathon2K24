@@ -14,12 +14,16 @@ import AppError from './utils/AppError'
 import { ZodError } from 'zod'
 
 const app = express()
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 app.use(cors())
 
 app.use(express.json())
 
 app.use(routes)
+
+
 
 app.use((
     error: any,

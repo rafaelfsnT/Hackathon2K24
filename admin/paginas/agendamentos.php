@@ -17,6 +17,7 @@
         <img src="./img/logovacina.png" alt="Logo do Sistema" class="logo">
         <h1>Tela de Agendamento</h1>
         <form id="cadastroForm" method="post" action="./paginas/home">
+ 
 
 
             <div class="form-group">
@@ -59,7 +60,12 @@ if (isset($_POST['nome'])) {
 }
 
 function enviarJSON($jsonData)
+
+    
 {
+   
+
+    
     $url = 'http://localhost:3001/agendamento';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -70,7 +76,6 @@ function enviarJSON($jsonData)
 
     $response = curl_exec($ch);
     curl_close($ch);
-
 
 
     if ($response) {
