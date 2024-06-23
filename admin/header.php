@@ -19,12 +19,16 @@
                     </a>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownNotifications" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                </li>
-            </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+                    <li><a class="dropdown-item" href="./paginas/home">Editar Perfil</a></li>
+                    <li><a class="dropdown-item" href="./paginas/home">Sair</a></li>
+                </ul>
+            </li>
+        </ul>
         </div>
     </div>
 </nav>

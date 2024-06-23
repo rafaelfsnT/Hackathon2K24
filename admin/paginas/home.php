@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela Inicial</title>
+    <title>Agendamentos Online de Vacinas</title>
     <link rel="stylesheet" href="./cssPages/home.css">
+    <link rel="icon" href="./img/logovacina.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/8bb0dffdb3.js" crossorigin="anonymous"></script>
 
@@ -23,8 +24,8 @@
                 <div class="col-md-8 text-center">
                     <h1>Agendamentos online de vacinas</h1>
                     <h4>Agende suas vacinas comigo, sua plataforma de saúde digital!</h4>
-                    <a href="./paginas/agendamentos "> <button class="btn btn-outline-success mt-3" type="button">Agendar</button></a>
-                    <a href="./paginas/listarAgendamentos "> <button class="btn btn-outline-success mt-3" type="button">Listar Agendas</button></a>
+                    <a href="./paginas/agendamentos "> <button class="btn btn-outline-success mt-3 me-3" type="button">Agendar</button></a>
+                    <a href="./paginas/listarAgendamentos "> <button class="btn btn-outline-success mt-3 " type="button">Listar Agendas</button></a>
                 </div>
                 <div class="col-md-4">
                     <img src="./img/imagem4.png" alt="Imagem" class="img-fluid">
@@ -32,9 +33,7 @@
             </div>
         </div>
     </div>
-
-    <br>
-    <br>
+    
     <div class="descricao">
         <div class="row mt-4 justify-content-center">
             <div class="col-md-3 text-center">
