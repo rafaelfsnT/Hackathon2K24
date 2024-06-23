@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Agendamento</title>
-    <link rel="stylesheet" href="./cssPages/agendamentos.css">
+    <link rel="stylesheet" href="./cssPages/listarAgendamento.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -23,6 +24,7 @@
                             <th>Nome do idoso</th>
                             <th>Nome do agente</th>
                             <th>Nome da vacina</th>
+                            <th>Agendamento</th>
                             <th>Opções</th>
                         </tr>
                     </thead>
@@ -43,12 +45,15 @@
                                 <td><?php echo $agendamento->nome_idoso; ?></td>
                                 <td><?php echo $agendamento->nome_agente; ?></td>
                                 <td><?php echo $agendamento->nome_vacina; ?></td>
+                                <td><?php echo $agendamento->agendamento; ?></td>
                                 <td>
-                                    <a href="http://localhost:3001/agendamento/<?php echo $agendamento->id; ?>"
-                                        class="btn btn-success">
+                               
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="abrirModalEditar(<?php echo $agendamento->id; ?>)">
                                         <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                <td>
+                                    </button>
+
+
                                     <button type="button" class="btn btn-danger"
                                         onclick="deleteAgendamento(<?php echo $agendamento->id; ?>)">
                                         <i class="fas fa-trash"></i> Excluir
@@ -56,6 +61,41 @@
                                 </td>
                                 </a>
                                 </td>
+                                <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog"
+                                    aria-labelledby="modalEditarLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalEditarLabel">Editar Agendamento</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="formEditarAgendamento">
+                                                    <!-- Campos de edição -->
+                                                    <div class="form-group">
+                                                        <label for="nome_idoso">Nome do Idoso</label>
+                                                        <input type="text" class="form-control" id="nome_idoso"
+                                                            name="nome_idoso" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nome_vacina">Nome da Vacina</label>
+                                                        <input type="text" class="form-control" id="nome_vacina"
+                                                            name="nome_vacina" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="agendamento">agendamento</label>
+                                                        <input type="date" class="form-control" id="agendamento"
+                                                            name="agendamento" required>
+                                                      </div>
+                                                    <!-- Adicione mais campos conforme necessário -->
+                                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </tr>
                             <?php
                         }
@@ -78,19 +118,60 @@
                     'Content-Type': 'application/json',
                 },
             })
-            .then(response => {
-                if (response.ok) {
-                    alert('Agendamento excluído com sucesso.');
-                    location.reload(); 
-                } else {
+                .then(response => {
+                    if (response.ok) {
+                        alert('Agendamento excluído com sucesso.');
+                        location.reload();
+                    } else {
+                        alert('Erro ao excluir o agendamento.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
                     alert('Erro ao excluir o agendamento.');
-                }
+                });
+        }
+    }
+      
+    function abrirModalEditar(id) {
+
+        fetch(`http://localhost:3001/agendamentos/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('nome_idoso').value = data.agendamento.nome_idoso;
+                document.getElementById('nome_vacina').value = data.agendamento.nome_vacina;
+                document.getElementById('agendamento').value = data.agendamento.agendamento;
+                $('#modalEditar').modal('show'); 
             })
             .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro ao excluir o agendamento.');
+                console.error('Erro ao carregar os dados do agendamento.', error);
+                alert('Erro ao carregar os dados do agendamento.');
             });
-        }
+
+
+        document.getElementById('formEditarAgendamento').onsubmit = function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch(`http://localhost:3001/agendamento/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Agendamento atualizado com sucesso.');
+                        location.reload(); 
+                    } else {
+                        alert('Erro ao atualizar o agendamento.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao atualizar o agendamento.');
+                });
+        };
     }
 </script>
 
