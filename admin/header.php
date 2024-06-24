@@ -24,7 +24,7 @@
                         <i class="fa-solid fa-bell"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotifications">
-                        <li><a class="dropdown-item">Você não possui notificações ainda</a></li>
+                        <li><a href ="./paginas/agendamentos" class="dropdown-item">Campanha de Vacinação contra a gripe de 20/06/2024 a 20/06/2024, Agende já</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

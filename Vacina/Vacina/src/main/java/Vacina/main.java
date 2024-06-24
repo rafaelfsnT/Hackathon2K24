@@ -18,6 +18,7 @@ public class main {
 
 
         JButton idosoButton = new JButton("Cadastrar/Alterar Idoso");
+        JButton usuarioButton = new JButton("Usuario");
         JButton agenteButton = new JButton("Cadastrar/Alterar Agente");
         JButton vacinaButton = new JButton("Cadastrar/Alterar Vacina");
         JButton agendamentoButton = new JButton("Cadastrar/Alterar Agendamento");
@@ -26,6 +27,7 @@ public class main {
 
         Dimension buttonSize = new Dimension(250, 50); // Adjust as needed
         idosoButton.setPreferredSize(buttonSize);
+        usuarioButton.setPreferredSize(buttonSize);
         agenteButton.setPreferredSize(buttonSize);
         vacinaButton.setPreferredSize(buttonSize);
         agendamentoButton.setPreferredSize(buttonSize);
@@ -43,6 +45,7 @@ public class main {
         emptyPanel.setBackground(Color.black);
 
         emptyPanel.add(idosoButton);
+        emptyPanel.add(usuarioButton);
         emptyPanel.add(agenteButton);
         emptyPanel.add(vacinaButton);
         emptyPanel.add(agendamentoButton);
@@ -51,6 +54,7 @@ public class main {
         buttonPanel.add(emptyPanel);
 
         idosoButton.addActionListener(e -> idosoINvocar());
+        usuarioButton.addActionListener(e -> usuarioINvocar());
         agenteButton.addActionListener(e -> agenteINvocar());
         vacinaButton.addActionListener(e -> vacinaINvocar());
         agendamentoButton.addActionListener(e -> agemdamentoINvocar());
@@ -107,6 +111,14 @@ public class main {
     public static void agendamentoNotificação() {
         SwingUtilities.invokeLater(() -> {
             var form = new AgendamentoView();
+            form.setVisible(true);
+        });
+
+    }
+
+    public static void usuarioINvocar() {
+        SwingUtilities.invokeLater(() -> {
+            var form = new UsuarioForm();
             form.setVisible(true);
         });
 

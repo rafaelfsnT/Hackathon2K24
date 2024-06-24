@@ -158,7 +158,6 @@ public class IdosoForm extends JFrame {
     private Idoso construiridoso() {
         return campoId.getText().isEmpty()
                 ? new Idoso(
-                null,
                 campoNomeIdoso.getText(),
                 areaObservacoes.getText()
         )
