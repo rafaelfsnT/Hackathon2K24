@@ -1,67 +1,55 @@
 .row {
     margin-bottom: 1.5rem;
-    /* Espaço entre as linhas de conteúdo */
-    /* home.css */
+}
 
-    /* Reset básico */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
 
-    .container,
-    .row {
-        max-width: 100%;
-    }
+.container,
+.row {
+    max-width: 100%;
+}
 
-    img {
-        max-width: 100%;
-        height: auto;
-    }
+img {
+    max-width: 100%;
+    height: auto;
+}
 
+
+.fs-2 {
+    font-size: 2rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
 }
 
 .navbar-logo {
     width: 70px;
     height: auto;
 }
-
 .navbar-custom {
-    padding-left: 10px;
-    padding-right: 15px;
     background-color: #256265;
-    padding: 10px 5% !important;
+    padding: 10px 5%;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
-
-.navbar-nav-center {
-    margin: auto;
+.navbar-custom .navbar-search {
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s;
 }
-
-.carrossel {
-    margin-top: 15px;
-}
-
-.carousel-item img {
-    object-fit: cover;
-    width: 100%;
-    height: 800px;
-}
-
-.fs-2 {
-    font-size: 2rem;
-    /* Tamanho do ícone */
-}
-
-.mt-2 {
-    margin-top: 0.5rem;
-    /* Espaçamento superior */
+.navbar-custom .navbar-search:hover {
+    background-color: #fff;
+    border-color: #ced4da; 
 }
 
 li.nav-item a {
@@ -81,4 +69,44 @@ li.nav-item a {
 .fas {
     font-weight: 900;
     color: #256265;
+}
+
+.footer-custom {
+    background-color: #256265;
+    color: #fff;
+    padding: 20px 5%;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Rotapé ou Footer */
+.footer-custom {
+    background-color: #256265;
+    color: #fff;
+    padding: 20px 5%;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
+}
+.footer-custom a {
+    color: #fff;
+    text-decoration: none;
+}
+.footer-custom a:hover {
+    text-decoration: underline;
+}
+.footer-custom .social-icons i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #fff;
+}
+.footer-custom .social-icons i:hover {
+    color: #ddd;
+}
+.footer-custom .text-center {
+    text-align: center;
+}
+.footer-custom .links-center ul {
+    padding: 0;
+    list-style: none;
+}
+.footer-custom .links-center ul li {
+    margin-bottom: 10px;
 }

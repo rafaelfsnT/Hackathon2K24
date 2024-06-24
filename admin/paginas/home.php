@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="./cssPages/home.css">
     <link rel="icon" href="./img/logovacina.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8bb0dffdb3.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
     <?php
-    require "./header.php"; 
-
+    require "./header.php";
     ?>
     <br>
     <div class="conteudo">
@@ -33,7 +32,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="descricao">
         <div class="row mt-4 justify-content-center">
             <div class="col-md-3 text-center">
@@ -74,6 +73,41 @@
     </div>
     </div>
 
+
+    <footer class="footer-custom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <h3>Contato</h3>
+                    <p>hackathon2024@gmail.com</p>
+                    <p>Telefone: (44) 99999-9999</p>
+                    <p>Faculdade Unialfa - PR</p>
+                </div>
+                <div class="col-md-4 text-center links-center">
+                    <h3>Links Úteis</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="./paginas/home">Página Inicial</a></li>
+                        <li><a href="./paginas/agendamentos">Faça um Agendamento</a></li>
+                        <li><a href="./paginas/listarAgendamentos">Listar Agendamentos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/?lang=pt-br"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                        <a href="https://br.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
