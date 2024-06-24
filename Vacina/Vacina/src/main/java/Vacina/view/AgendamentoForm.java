@@ -1,10 +1,7 @@
 package Vacina.view;
 
-import Vacina.main;
 import Vacina.model.Agendamento;
-import Vacina.model.AgenteDeSaude;
 import Vacina.service.AgendamentoService;
-import Vacina.service.AgenteDeSaudeService;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -12,10 +9,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.text.MaskFormatter;
 
 import static java.lang.Integer.parseInt;
-
 
 public class AgendamentoForm extends JFrame {
     private AgendamentoService service;
@@ -27,8 +27,8 @@ public class AgendamentoForm extends JFrame {
     private JTextField campoIdoso;
     private JLabel labelVacina;
     private JTextField campoVacina;
-    private JLabel labelAtndimento;
-    private JTextField campoAtendimento;
+    private JLabel labelAtendimento;
+    private JFormattedTextField campoAtendimento;
     private JButton botaoSalvar;
     private JButton botaoCancelar;
     private JButton botaoDeletar;
@@ -45,7 +45,6 @@ public class AgendamentoForm extends JFrame {
         JPanel painelEntrada = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(10, 10, 10, 10);
-
 
         campoId = new JTextField(20);
         campoId.setEnabled(false);
@@ -84,12 +83,17 @@ public class AgendamentoForm extends JFrame {
         constraints.gridy = 3;
         painelEntrada.add(campoVacina, constraints);
 
-        labelAtndimento = new JLabel("Dia de Atendimento:");
+        labelAtendimento = new JLabel("Dia de Atendimento:");
         constraints.gridx = 0;
         constraints.gridy = 4;
-        painelEntrada.add(labelAtndimento, constraints);
+        painelEntrada.add(labelAtendimento, constraints);
 
-        campoAtendimento = new JTextField(20);
+        try {
+            campoAtendimento = new JFormattedTextField(new MaskFormatter("##/##/####"));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        campoAtendimento.setColumns(20);
         constraints.gridx = 1;
         constraints.gridy = 4;
         painelEntrada.add(campoAtendimento, constraints);
@@ -98,7 +102,6 @@ public class AgendamentoForm extends JFrame {
         botaoVoltarAgendamento.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Fechar o formulário de Agendamento
                 dispose();
             }
         });
@@ -124,8 +127,6 @@ public class AgendamentoForm extends JFrame {
         constraints.gridy = 5;
         painelEntrada.add(botaoSalvar, constraints);
 
-
-
         JPanel painelSaida = new JPanel(new BorderLayout());
 
         tabelaAgendamento = new JTable();
@@ -141,27 +142,26 @@ public class AgendamentoForm extends JFrame {
 
         setLocationRelativeTo(null);
     }
+
     private DefaultTableModel carregarAtendimento() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("id");
         model.addColumn("idoso");
         model.addColumn("agente");
         model.addColumn("vacina");
-        model.addColumn("data atendiemento");
-
+        model.addColumn("data atendimento");
 
         service.listarAgendamento().forEach(agendamento -> model.addRow(new Object[]{
-                        agendamento.getId(),
-                        agendamento.getAgente(),
-                        agendamento.getIdoso(),
-                        agendamento.getVacina(),
-                        agendamento.getAtendimento()
-                })
-        );
+                agendamento.getId(),
+                agendamento.getIdoso(),
+                agendamento.getAgente(),
+                agendamento.getVacina(),
+                agendamento.getAtendimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        }));
         return model;
     }
 
-    private void limparCampos(){
+    private void limparCampos() {
         campoIdoso.setText("");
         campoAtendimento.setText("");
         campoNomeAgente.setText("");
@@ -169,51 +169,69 @@ public class AgendamentoForm extends JFrame {
         campoId.setText("");
     }
 
-    private void executarAcaoDoBotao() {
+    private boolean executarAcaoDoBotao() {
         if (validarCampoVazio()) {
-            service.salvar(construirAgendamento());
-            limparCampos();
-            tabelaAgendamento.setModel(carregarAtendimento());
+            String dataFormatada = campoAtendimento.getText();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            try {
+                LocalDate dataConvertida = LocalDate.parse(dataFormatada, formatter);
+                Agendamento agendamento = construirAgendamento(dataConvertida);
+                service.salvar(agendamento);
+                limparCampos();
+                tabelaAgendamento.setModel(carregarAtendimento());
+                return true;
+            } catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(this, "Data inválida!", "Erro de Formato de Data", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
         }
+        return false;
     }
 
     private void deletar() {
-        service.excluir(construirAgendamento());
+        service.excluir(construirAgendamento(null));
         limparCampos();
         tabelaAgendamento.setModel(carregarAtendimento());
     }
-    private Agendamento construirAgendamento() {
-        return campoId.getText().isEmpty()
-                ?  new Agendamento(
-                campoIdoso.getText(),
-                campoNomeAgente.getText(),
-                campoVacina.getText(),
-                LocalDate.parse(campoAtendimento.getText())
-        )
-                : new Agendamento(
-                parseInt(campoId.getText()),
-                campoIdoso.getText(),
-                campoNomeAgente.getText(),
-                campoVacina.getText(),
-                LocalDate.parse(campoAtendimento.getText()));
+
+    private Agendamento construirAgendamento(LocalDate dataAtendimento) {
+        if (campoId.getText().isEmpty()) {
+            return new Agendamento(
+                    campoIdoso.getText(),
+                    campoNomeAgente.getText(),
+                    campoVacina.getText(),
+                    dataAtendimento
+            );
+        } else {
+            return new Agendamento(
+                    parseInt(campoId.getText()),
+                    campoIdoso.getText(),
+                    campoNomeAgente.getText(),
+                    campoVacina.getText(),
+                    dataAtendimento
+            );
+        }
     }
+
     private void selecionarAgendamento(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
             int selectedRow = tabelaAgendamento.getSelectedRow();
             if (selectedRow != -1) {
                 var id = (Integer) tabelaAgendamento.getValueAt(selectedRow, 0);
                 campoId.setText(id.toString());
-                var agente = (String) tabelaAgendamento.getValueAt(selectedRow, 1);
-                campoNomeAgente.setText(agente);
-                var idoso = (String) tabelaAgendamento.getValueAt(selectedRow,2);
-                campoIdoso.setText(idoso);
-                var vacina = (String) tabelaAgendamento.getValueAt(selectedRow,3);
+                var idoso = (String) tabelaAgendamento.getValueAt(selectedRow, 1);
+                campoNomeAgente.setText(idoso);
+                var agente = (String) tabelaAgendamento.getValueAt(selectedRow, 2);
+                campoIdoso.setText(agente);
+                var vacina = (String) tabelaAgendamento.getValueAt(selectedRow, 3);
                 campoVacina.setText(vacina);
-                var atendimento = (LocalDate)  tabelaAgendamento.getValueAt(selectedRow,4);
-                campoAtendimento.setText(atendimento.toString());
+                var atendimento = (String) tabelaAgendamento.getValueAt(selectedRow, 4);
+                campoAtendimento.setText(atendimento);
             }
         }
     }
+
     private boolean validarCampoVazio() {
         if (campoNomeAgente.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "O campo nome está vazio!", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
