@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Agendamento</title>
     <link rel="stylesheet" href="./cssPages/listarAgendamento.css">
-
+<script src="./jsPages/listarAgendamentos.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -103,9 +103,8 @@
                 </div>
             </div>
         </div>
-
-
 </body>
+
 
 <script>
     function deleteAgendamento(id) {

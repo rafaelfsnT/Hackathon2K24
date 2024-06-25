@@ -1,10 +1,4 @@
 <?php 
-    //verificar se tem informações no POST
-    //caso tenha criar a consulta no banco de dados
-    //verificar se o id que vem do banco está preenchido
-    //verificar se a senha digitada é a mesma que está no banco de dados
-    //Grava o usuário na sessao
-    //redireciona o usuário para uma página home
 
     $login = $_POST["login"] ?? NULL;
     $senha = $_POST["password"] ?? NULL;
