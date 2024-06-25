@@ -26,7 +26,7 @@ public class UsuarioForm extends JFrame{
     private JLabel labelLogin;
     private JTextField campoLogin;
     private JLabel labelSenha;
-    private JTextField campoSenha;
+    private JPasswordField campoSenha;
     private JLabel labelAtivo;
     private JTextField campoAtivo;
     private JButton botaoSalvar;
@@ -65,7 +65,7 @@ public class UsuarioForm extends JFrame{
         constraints.gridy = 1;
         painelEntrada.add(campoNome, constraints);
 
-        labelEmail = new JLabel("email");
+        labelEmail = new JLabel("E-mail");
         constraints.gridx = 0;
         constraints.gridy = 2;
         painelEntrada.add(labelEmail, constraints);
@@ -75,7 +75,7 @@ public class UsuarioForm extends JFrame{
         constraints.gridy = 2;
         painelEntrada.add(campoEmail, constraints);
 
-        labelLogin = new JLabel("login");
+        labelLogin = new JLabel("Login");
         constraints.gridx = 0;
         constraints.gridy = 3;
         painelEntrada.add(labelLogin, constraints);
@@ -85,12 +85,12 @@ public class UsuarioForm extends JFrame{
         constraints.gridy = 3;
         painelEntrada.add(campoLogin, constraints);
 
-        labelSenha = new JLabel("senha");
+        labelSenha = new JLabel("Senha");
         constraints.gridx = 0;
         constraints.gridy = 4;
         painelEntrada.add(labelSenha, constraints);
 
-        campoSenha = new JTextField(20);
+        campoSenha = new JPasswordField(20);
         constraints.gridx = 1;
         constraints.gridy = 4;
         painelEntrada.add(campoSenha, constraints);
@@ -154,12 +154,12 @@ public class UsuarioForm extends JFrame{
 
     private DefaultTableModel carregarDadosUsuario() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("id");
-        model.addColumn("nome");
-        model.addColumn("email");
-        model.addColumn("login");
-        model.addColumn("senha");
-        model.addColumn("ativo");
+        model.addColumn("ID");
+        model.addColumn("Nome");
+        model.addColumn("E-mail");
+        model.addColumn("Login");
+        model.addColumn("Senha");
+        model.addColumn("Ativo");
 
         service.listarUsuario().forEach(usuario -> model.addRow(new Object[]{
                 usuario.getId(),

@@ -121,8 +121,8 @@ public class IdosoForm extends JFrame {
 
     private DefaultTableModel carregarDadosIdoso() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("id");
-        model.addColumn("nome");
+        model.addColumn("ID");
+        model.addColumn("Nome");
         model.addColumn("Observação");
 
         service.listarIdoso().forEach(idoso -> model.addRow(new Object[]{

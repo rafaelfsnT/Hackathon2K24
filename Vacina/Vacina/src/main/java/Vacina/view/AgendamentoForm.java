@@ -29,6 +29,9 @@ public class AgendamentoForm extends JFrame {
     private JTextField campoVacina;
     private JLabel labelAtendimento;
     private JFormattedTextField campoAtendimento;
+
+    private JLabel labelStatus;
+    private JTextField campoStatus;
     private JButton botaoSalvar;
     private JButton botaoCancelar;
     private JButton botaoDeletar;
@@ -53,7 +56,7 @@ public class AgendamentoForm extends JFrame {
         constraints.gridy = 0;
         painelEntrada.add(campoId, constraints);
 
-        labelNomeAgente = new JLabel("Nome do idoso:");
+        labelNomeAgente = new JLabel("Nome do Idoso:");
         constraints.gridx = 0;
         constraints.gridy = 1;
         painelEntrada.add(labelNomeAgente, constraints);
@@ -98,6 +101,16 @@ public class AgendamentoForm extends JFrame {
         constraints.gridy = 4;
         painelEntrada.add(campoAtendimento, constraints);
 
+        labelStatus = new JLabel("Status:");
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        painelEntrada.add(labelStatus, constraints);
+
+        campoStatus = new JTextField(20);
+        constraints.gridx = 1;
+        constraints.gridy = 5;
+        painelEntrada.add(campoStatus, constraints);
+
         botaoVoltarAgendamento = new JButton("Voltar");
         botaoVoltarAgendamento.addActionListener(new ActionListener() {
             @Override
@@ -106,25 +119,25 @@ public class AgendamentoForm extends JFrame {
             }
         });
         constraints.gridx = 0;
-        constraints.gridy = 5;
+        constraints.gridy = 6;
         painelEntrada.add(botaoVoltarAgendamento, constraints);
 
         botaoCancelar = new JButton("Cancelar");
         botaoCancelar.addActionListener(e -> limparCampos());
         constraints.gridx = 1;
-        constraints.gridy = 5;
+        constraints.gridy = 6;
         painelEntrada.add(botaoCancelar, constraints);
 
         botaoDeletar = new JButton("Deletar");
         botaoDeletar.addActionListener(e -> deletar());
         constraints.gridx = 2;
-        constraints.gridy = 5;
+        constraints.gridy = 6;
         painelEntrada.add(botaoDeletar, constraints);
 
         botaoSalvar = new JButton("Salvar");
         botaoSalvar.addActionListener(e -> executarAcaoDoBotao());
         constraints.gridx = 3;
-        constraints.gridy = 5;
+        constraints.gridy = 6;
         painelEntrada.add(botaoSalvar, constraints);
 
         JPanel painelSaida = new JPanel(new BorderLayout());
@@ -145,18 +158,22 @@ public class AgendamentoForm extends JFrame {
 
     private DefaultTableModel carregarAtendimento() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("id");
-        model.addColumn("idoso");
-        model.addColumn("agente");
-        model.addColumn("vacina");
-        model.addColumn("data atendimento");
+        model.addColumn("ID");
+        model.addColumn("Agente");
+        model.addColumn("Idoso");
+        model.addColumn("Vacina");
+        model.addColumn("Data Atendimento");
+        model.addColumn("Status");
+
+
 
         service.listarAgendamento().forEach(agendamento -> model.addRow(new Object[]{
                 agendamento.getId(),
                 agendamento.getIdoso(),
                 agendamento.getAgente(),
                 agendamento.getVacina(),
-                agendamento.getAtendimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                agendamento.getAtendimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                agendamento.getStatus()
         }));
         return model;
     }
@@ -167,6 +184,7 @@ public class AgendamentoForm extends JFrame {
         campoNomeAgente.setText("");
         campoVacina.setText("");
         campoId.setText("");
+        campoStatus.setText("");
     }
 
     private boolean executarAcaoDoBotao() {
@@ -198,10 +216,13 @@ public class AgendamentoForm extends JFrame {
     private Agendamento construirAgendamento(LocalDate dataAtendimento) {
         if (campoId.getText().isEmpty()) {
             return new Agendamento(
+                    null,
                     campoIdoso.getText(),
                     campoNomeAgente.getText(),
                     campoVacina.getText(),
-                    dataAtendimento
+                    dataAtendimento,
+                    campoStatus.getText()
+
             );
         } else {
             return new Agendamento(
@@ -209,7 +230,8 @@ public class AgendamentoForm extends JFrame {
                     campoIdoso.getText(),
                     campoNomeAgente.getText(),
                     campoVacina.getText(),
-                    dataAtendimento
+                    dataAtendimento,
+                    campoStatus.getText()
             );
         }
     }
@@ -221,22 +243,35 @@ public class AgendamentoForm extends JFrame {
                 var id = (Integer) tabelaAgendamento.getValueAt(selectedRow, 0);
                 campoId.setText(id.toString());
                 var idoso = (String) tabelaAgendamento.getValueAt(selectedRow, 1);
-                campoNomeAgente.setText(idoso);
+                campoIdoso.setText(idoso);
                 var agente = (String) tabelaAgendamento.getValueAt(selectedRow, 2);
-                campoIdoso.setText(agente);
+                campoNomeAgente.setText(agente);
                 var vacina = (String) tabelaAgendamento.getValueAt(selectedRow, 3);
                 campoVacina.setText(vacina);
                 var atendimento = (String) tabelaAgendamento.getValueAt(selectedRow, 4);
                 campoAtendimento.setText(atendimento);
+                var status = (String) tabelaAgendamento.getValueAt(selectedRow, 5);
+                campoStatus.setText(status);
             }
         }
     }
 
     private boolean validarCampoVazio() {
+        boolean isValid = true;
+
         if (campoNomeAgente.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "O campo nome está vazio!", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
-            return false;
+            JOptionPane.showMessageDialog(this, "O campo do idoso está vazio!", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
+            isValid = false;
         }
-        return true;
+
+        if (campoVacina.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O campo da vacina está vazio!", "Campo Inválido", JOptionPane.ERROR_MESSAGE);
+            isValid = false;
+        }
+
+        return isValid;
     }
+
+
+
 }
