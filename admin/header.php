@@ -10,7 +10,7 @@
                     <form class="d-flex">
                         <div class="position-relative w-100">
                             <input class="form-control ps-5" type="search" placeholder="Procurar" aria-label="Search">
-                            <i class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                            <i class="fa fa-search position-absolute top-50 start-0 translate-middle-y ms-3" ></i>
                         </div>
                     </form>
                 </li>
@@ -24,7 +24,7 @@
                         <i class="fa-solid fa-bell"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotifications">
-                        <li><a href ="./paginas/agendamentos" class="dropdown-item">Campanha de Vacinação contra a gripe de 20/06/2024 a 20/06/2024, Agende já</a></li>
+                        <li><a href="./paginas/agendamentos" class="dropdown-item">Campanha de Vacinação contra a gripe de 20/06/2024 a 20/06/2024,<strong> Agende já</strong></a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

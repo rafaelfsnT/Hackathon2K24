@@ -54,10 +54,10 @@
         </div>
     </div>
     <br>
-    <br>
+
+
     <div class="container mt-4">
         <div class="row">
-
             <div class="col-md-6">
 
                 <h3>As campanhas de vacinação são pilares essenciais da saúde pública global. Elas desempenham um papel crucial na proteção contra doenças infecciosas,
@@ -74,6 +74,8 @@
     </div>
 
 
+
+    <!-- Footer -->
     <footer class="footer-custom">
         <div class="container-fluid">
             <div class="row">

@@ -51,7 +51,6 @@ img {
     background-color: #fff;
     border-color: #ced4da; 
 }
-
 li.nav-item a {
     color: #ffffff;
     text-decoration: none;
@@ -77,6 +76,7 @@ li.nav-item a {
     padding: 20px 5%;
     box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.2);
 }
+
 
 /* Rotapé ou Footer */
 .footer-custom {

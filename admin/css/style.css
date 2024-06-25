@@ -31,12 +31,12 @@ iframe {
 }
 
 .login h1 {
-	color: #4F46E5!important;
+	color: #256265 !important;
 	font-weight: bold;
 	text-align: center;
 }
 .login input[type="submit"] {
-	background-color: #4F46E5 !important;
+	background-color: #256265 !important;
 	border: none;
 	padding: 5px 20px;
 	border-radius: 5px;
@@ -46,6 +46,6 @@ iframe {
 	font-weight: bold;
 }
 .login input[type="submit"]:hover {
-	background-color: #453ebe !important;
+	background-color: #256265 !important;
 	transition: ease 0.5s;
 }
