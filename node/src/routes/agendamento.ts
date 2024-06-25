@@ -24,6 +24,7 @@ interface IDadosAgendamento {
     nome_idoso: String
     nome_agente: String
     nome_vacina: String
+    status: String
 
 }
 

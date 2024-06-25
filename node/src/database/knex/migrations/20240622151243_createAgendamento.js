@@ -10,6 +10,7 @@ exports.up = function(knex) {
             table.text('nome_idoso').notNullable();
             table.text('nome_agente').notNullable();
             table.text('nome_vacina').notNullable();
+            table.text('status').notNullable();
            }
     ).then(() => {
         console.log('Tabela de agendamento criada!!')

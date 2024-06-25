@@ -49,12 +49,12 @@
                                 <td>
 
                                     <button type="button" class="btn btn-success" onclick="abrirModalEditar(<?php echo $agendamento->id; ?>)">
-                                        <i class="fas fa-edit"></i> Editar
+                                        <i class="fas fa-edit"></i> Editar 
                                     </button>
 
 
                                     <button type="button" class="btn btn-danger" onclick="deleteAgendamento(<?php echo $agendamento->id; ?>)">
-                                        <i class="fas fa-trash"></i> Excluir
+                                        <i class="fas fa-trash"></i> Cancelar
                                     </button>
                                 </td>
                                 </a>
@@ -171,6 +171,7 @@
                 });
         };
     }
-</script>
+
+
 
 </html>
