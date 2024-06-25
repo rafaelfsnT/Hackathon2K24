@@ -121,8 +121,8 @@ public class Vacinaform extends JFrame {
 
     private DefaultTableModel carregarDadosVacina() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Lote da vacina");
-        model.addColumn("nome");
+        model.addColumn("ID");
+        model.addColumn("Nome");
 
 
         service.listarVacina().forEach(vacina -> model.addRow(new Object[]{

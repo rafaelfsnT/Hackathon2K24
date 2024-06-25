@@ -111,8 +111,8 @@ public class AgenteDeSaudeForm extends JFrame {
 
     private DefaultTableModel carregarDadosAgente() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("id");
-        model.addColumn("nome");
+        model.addColumn("ID");
+        model.addColumn("Nome");
 
 
         service.listarAgente().forEach(agente -> model.addRow(new Object[]{

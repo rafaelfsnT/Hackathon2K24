@@ -1,5 +1,6 @@
 package Vacina.view;
 
+import Vacina.service.AgendamentoService;
 import Vacina.service.HistoricoService;
 
 import javax.swing.*;
@@ -8,14 +9,15 @@ import java.awt.*;
 
 public class AgendamentoView extends JFrame {
     private JTable tabelaAgendamenmto;
-    private HistoricoService service;
+    private AgendamentoService service;
 
     public AgendamentoView(){
-        service = new HistoricoService();
+        service = new AgendamentoService();
 
         setTitle("Agendados");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setSize(500, 600);
+
 
         JPanel painelEntrada = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -24,7 +26,7 @@ public class AgendamentoView extends JFrame {
         JPanel painelSaida = new JPanel(new BorderLayout());
 
         tabelaAgendamenmto = new JTable();
-        tabelaAgendamenmto.setModel(carregarDadosHistorico());
+        tabelaAgendamenmto.setModel(carregarDadosAgendamento());
         tabelaAgendamenmto.setDefaultEditor(Object.class, null);
 
         JScrollPane scrollPane = new JScrollPane(tabelaAgendamenmto);
@@ -36,18 +38,21 @@ public class AgendamentoView extends JFrame {
         setLocationRelativeTo(null);
 
     }
-    private DefaultTableModel carregarDadosHistorico() {
+    private DefaultTableModel carregarDadosAgendamento() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("nome");
-        model.addColumn("vacina");
-        model.addColumn("aplicação");
-        model.addColumn("agente");
+        model.addColumn("Nome");
+        model.addColumn("Agente");
+        model.addColumn("Vacina");
+        model.addColumn("Aplicação");
+        model.addColumn("status");
 
-        service.listarHistorico().forEach(historico -> model.addRow(new Object[]{
-                        historico.getNomeIdoso(),
-                        historico.getNomeVacina(),
-                        historico.getDataAplicacao(),
-                        historico.getNomeAgente()
+        service.listarAgendamento().forEach(agendamento -> model.addRow(new Object[]{
+                        agendamento.getAgente(),
+                        agendamento.getIdoso(),
+                        agendamento.getVacina(),
+                        agendamento.getAtendimento(),
+                        agendamento.getStatus()
+
                 })
         );
         return model;
