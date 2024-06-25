@@ -42,16 +42,13 @@ public class HistoricoView extends JFrame {
 }
     private DefaultTableModel carregarDadosHistorico() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("nome");
-        model.addColumn("vacina");
-        model.addColumn("aplicação");
-        model.addColumn("agente");
+        model.addColumn("Nome");
+        model.addColumn("Observação");
+
 
         service.listarHistorico().forEach(historico -> model.addRow(new Object[]{
                         historico.getNomeIdoso(),
-                        historico.getNomeVacina(),
-                        historico.getDataAplicacao(),
-                        historico.getNomeAgente()
+                        historico.getObservacao(),
                 })
         );
         return model;

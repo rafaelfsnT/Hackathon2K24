@@ -16,42 +16,43 @@ public class main {
         JFrame frame = new JFrame("Formulário");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        ImageIcon appIcon = new ImageIcon("C:/xampp/htdocs/Hackathon2K24/admin/img/icone.png");
+        frame.setIconImage(appIcon.getImage());
 
         JButton idosoButton = new JButton("Cadastrar/Alterar Idoso");
-        JButton usuarioButton = new JButton("Usuario");
+        JButton usuarioButton = new JButton("Cadastrar/Alterar Usuario");
         JButton agenteButton = new JButton("Cadastrar/Alterar Agente");
         JButton vacinaButton = new JButton("Cadastrar/Alterar Vacina");
         JButton agendamentoButton = new JButton("Cadastrar/Alterar Agendamento");
         JButton historicoButton = new JButton("Historico");
+        JButton agendaButton = new JButton("Agenda");
 
-
-        Dimension buttonSize = new Dimension(250, 50); // Adjust as needed
+        Dimension buttonSize = new Dimension(250, 50); // Ajuste conforme necessário
         idosoButton.setPreferredSize(buttonSize);
         usuarioButton.setPreferredSize(buttonSize);
         agenteButton.setPreferredSize(buttonSize);
         vacinaButton.setPreferredSize(buttonSize);
         agendamentoButton.setPreferredSize(buttonSize);
         historicoButton.setPreferredSize(buttonSize);
-
+        agendaButton.setPreferredSize(buttonSize);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.setBackground(Color.blue);
+        buttonPanel.setLayout(new GridBagLayout());
+        buttonPanel.setBackground(new Color(37, 98, 101));
 
-        buttonPanel.add(Box.createVerticalStrut(10));
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.insets = new Insets(10, 0, 10, 0); // Espaçamento entre os botões
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        JPanel emptyPanel = new JPanel();
-        emptyPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        emptyPanel.setBackground(Color.black);
-
-        emptyPanel.add(idosoButton);
-        emptyPanel.add(usuarioButton);
-        emptyPanel.add(agenteButton);
-        emptyPanel.add(vacinaButton);
-        emptyPanel.add(agendamentoButton);
-        emptyPanel.add(historicoButton);
-
-        buttonPanel.add(emptyPanel);
+        buttonPanel.add(idosoButton, gbc);
+        buttonPanel.add(usuarioButton, gbc);
+        buttonPanel.add(agenteButton, gbc);
+        buttonPanel.add(vacinaButton, gbc);
+        buttonPanel.add(agendamentoButton, gbc);
+        buttonPanel.add(historicoButton, gbc);
+        buttonPanel.add(agendaButton, gbc);
 
         idosoButton.addActionListener(e -> idosoINvocar());
         usuarioButton.addActionListener(e -> usuarioINvocar());
@@ -59,11 +60,9 @@ public class main {
         vacinaButton.addActionListener(e -> vacinaINvocar());
         agendamentoButton.addActionListener(e -> agemdamentoINvocar());
         historicoButton.addActionListener(e -> historicoINvocar());
-
-
+        agendaButton.addActionListener(e -> agendamentoNotificação());
 
         frame.add(buttonPanel, BorderLayout.CENTER);
-
 
         frame.pack();
         frame.setLocationRelativeTo(null);

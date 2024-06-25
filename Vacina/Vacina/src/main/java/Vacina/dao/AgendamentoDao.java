@@ -20,12 +20,13 @@ public class AgendamentoDao {
 }
 }
     public void inserir(Agendamento agendamento) throws SQLException {
-        String sql = "insert into agendamento (nome_idoso, nome_agente, nome_vacina, agendamento) values(?,?,?,?)";
+        String sql = "insert into agendamento (nome_idoso, nome_agente, nome_vacina, agendamento, status) values(?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, agendamento.getIdoso());
         ps.setString(2,agendamento.getAgente());
         ps.setString(3,agendamento.getVacina());
         ps.setDate(4, Date.valueOf(agendamento.getAtendimento()));
+        ps.setString(5,agendamento.getStatus());
         ps.execute();
     }
 
@@ -38,21 +39,23 @@ public class AgendamentoDao {
                     rs.getInt("id"),
                     rs.getString("nome_idoso"),
                     rs.getString("nome_agente"),
-                   rs.getString("nome_vacina"),
-                   rs.getDate("agendamento").toLocalDate()));
+                    rs.getString("nome_vacina"),
+                    rs.getDate("agendamento").toLocalDate(),
+                    rs.getString("status")));
         }
         rs.close();
 
         return agendamentos;
     }
     public void atualizar(Agendamento agendamento) throws SQLException {
-        String sql = "update agendamento set nome_idoso = ?, nome_agente = ?,nome_vacina = ?,agendamento = ? where id = ?";
+        String sql = "update agendamento set nome_idoso = ?, nome_agente = ?,nome_vacina = ?,agendamento = ?,status = ? where id = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, agendamento.getIdoso());
         ps.setString(2, agendamento.getAgente());
         ps.setString(3,agendamento.getVacina());
         ps.setDate(4, Date.valueOf(agendamento.getAtendimento()));
-        ps.setInt(5,agendamento.getId());
+        ps.setString(5,agendamento.getStatus());
+        ps.setInt(6,agendamento.getId());
 
         ps.execute();
     }
