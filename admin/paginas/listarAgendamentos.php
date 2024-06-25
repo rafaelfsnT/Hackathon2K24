@@ -108,7 +108,7 @@
 
 <script>
     function deleteAgendamento(id) {
-        if (confirm('Tem certeza que deseja excluir este agendamento?')) {
+        if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
             fetch(`http://localhost:3001/agendamentos/${id}`, {
                     method: 'DELETE',
                     headers: {
@@ -117,15 +117,15 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        alert('Agendamento excluído com sucesso.');
+                        alert('Agendamento cancelado com sucesso.');
                         location.reload();
                     } else {
-                        alert('Erro ao excluir o agendamento.');
+                        alert('Erro ao cancelar o agendamento.');
                     }
                 })
                 .catch(error => {
                     console.error('Erro:', error);
-                    alert('Erro ao excluir o agendamento.');
+                    alert('Erro ao cancelar o agendamento.');
                 });
         }
     }

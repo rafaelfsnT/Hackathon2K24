@@ -15,7 +15,7 @@
 
         <img src="./img/logovacina.png" alt="Logo do Sistema" class="logo">
         <h1>Tela de Agendamento</h1>
-        <form id="cadastroForm" method="post" action="./paginas/home">
+        <form id="cadastroForm" method="post" action="">
 
             <div class="form-group">
                 <label for="nome">Nome</label>
